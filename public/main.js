@@ -229,10 +229,10 @@ socket.on('someone has won', (winner, html) => {
 	$('#boardTicTacToe').append(html);
 	$('.ui.active.dimmer').hide();
 
-	if(winner == '=') alert('Han empadatado');
-	else if(socket.X && 'X' == winner) alert('Has ganado');
-	else if(socket.O && 'O' == winner) alert('Has ganado');
-	else alert('Has perdido');
+	if(winner == '=') alert('Han empatado!');
+	else if(socket.X && 'X' == winner) alert('Has ganado!');
+	else if(socket.O && 'O' == winner) alert('Has ganado!');
+	else alert('Has perdido!');
 
 	setTimeout(() => {
 		window.location.replace('/');
