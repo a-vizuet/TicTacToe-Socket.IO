@@ -150,31 +150,32 @@ function shot(enemy){
 
 function checkWinner(enemy){
 	let ganador = 0;
-	
+
 	for (var i = 0; i < 3; i++){
-		if($(`#0${i}`)[0].innerText == 'X' && $(`#1${i}`)[0].innerText == 'X' && $(`#2${i}`)[0].innerText == 'X') ganador = 1;
-		else if($(`#${i}0`)[0].innerText == 'X' && $(`#${i}1`)[0].innerText == 'X' && $(`#${i}2`)[0].innerText == 'X') ganador = 1;
-		else if($(`#00`)[0].innerText == 'X' && $(`#11`)[0].innerText == 'X' && $(`#22`)[0].innerText == 'X') ganador = 1;
-		else if($(`#02`)[0].innerText == 'X' && $(`#11`)[0].innerText == 'X' && $(`#20`)[0].innerText == 'X') ganador = 1;
-		else if($(`#0${i}`)[0].innerText == 'O' && $(`#1${i}`)[0].innerText == 'O' && $(`#2${i}`)[0].innerText == 'O') ganador = 2;
-		else if($(`#${i}0`)[0].innerText == 'O' && $(`#${i}1`)[0].innerText == 'O' && $(`#${i}2`)[0].innerText == 'O') ganador = 2;
-		else if($(`#00`)[0].innerText == 'O' && $(`#11`)[0].innerText == 'O' && $(`#22`)[0].innerText == 'O') ganador = 2;
-		else if($(`#02`)[0].innerText == 'O' && $(`#11`)[0].innerText == 'O' && $(`#20`)[0].innerText == 'O') ganador = 2;
-		else if(($(`#00`)[0].innerText == 'X' || $(`#00`)[0].innerText == 'O')
-			&& ($(`#01`)[0].innerText == 'X' || $(`#01`)[0].innerText == 'O')
-			&& ($(`#02`)[0].innerText == 'X' || $(`#02`)[0].innerText == 'O')
-			&& ($(`#10`)[0].innerText == 'X' || $(`#10`)[0].innerText == 'O')
-			&& ($(`#11`)[0].innerText == 'X' || $(`#11`)[0].innerText == 'O')
-			&& ($(`#12`)[0].innerText == 'X' || $(`#12`)[0].innerText == 'O')
-			&& ($(`#20`)[0].innerText == 'X' || $(`#20`)[0].innerText == 'O')
-			&& ($(`#21`)[0].innerText == 'X' || $(`#21`)[0].innerText == 'O')
-			&& ($(`#22`)[0].innerText == 'X' || $(`#22`)[0].innerText == 'O')) ganador = 3;
+		if($(`#0${i}`)[0].innerText.replace('\n', '') == 'X' && $(`#1${i}`)[0].innerText.replace('\n', '') == 'X' && $(`#2${i}`)[0].innerText.replace('\n', '') == 'X') ganador = 1;
+		else if($(`#${i}0`)[0].innerText.replace('\n', '') == 'X' && $(`#${i}1`)[0].innerText.replace('\n', '') == 'X' && $(`#${i}2`)[0].innerText.replace('\n', '') == 'X') ganador = 1;
+		else if($(`#00`)[0].innerText.replace('\n', '') == 'X' && $(`#11`)[0].innerText.replace('\n', '') == 'X' && $(`#22`)[0].innerText.replace('\n', '') == 'X') ganador = 1;
+		else if($(`#02`)[0].innerText.replace('\n', '') == 'X' && $(`#11`)[0].innerText.replace('\n', '') == 'X' && $(`#20`)[0].innerText.replace('\n', '') == 'X') ganador = 1;
+		else if($(`#0${i}`)[0].innerText.replace('\n', '') == 'O' && $(`#1${i}`)[0].innerText.replace('\n', '') == 'O' && $(`#2${i}`)[0].innerText.replace('\n', '') == 'O') ganador = 2;
+		else if($(`#${i}0`)[0].innerText.replace('\n', '') == 'O' && $(`#${i}1`)[0].innerText.replace('\n', '') == 'O' && $(`#${i}2`)[0].innerText.replace('\n', '') == 'O') ganador = 2;
+		else if($(`#00`)[0].innerText.replace('\n', '') == 'O' && $(`#11`)[0].innerText.replace('\n', '') == 'O' && $(`#22`)[0].innerText.replace('\n', '') == 'O')	ganador = 2;
+		else if($(`#02`)[0].innerText.replace('\n', '') == 'O' && $(`#11`)[0].innerText.replace('\n', '') == 'O' && $(`#20`)[0].innerText.replace('\n', '') == 'O') ganador = 2;
+		else if(($(`#00`)[0].innerText.replace('\n', '') == 'X' || $(`#00`)[0].innerText.replace('\n', '') == 'O')
+			&& ($(`#01`)[0].innerText.replace('\n', '') == 'X' || $(`#01`)[0].innerText.replace('\n', '') == 'O')
+			&& ($(`#02`)[0].innerText.replace('\n', '') == 'X' || $(`#02`)[0].innerText.replace('\n', '') == 'O')
+			&& ($(`#10`)[0].innerText.replace('\n', '') == 'X' || $(`#10`)[0].innerText.replace('\n', '') == 'O')
+			&& ($(`#11`)[0].innerText.replace('\n', '') == 'X' || $(`#11`)[0].innerText.replace('\n', '') == 'O')
+			&& ($(`#12`)[0].innerText.replace('\n', '') == 'X' || $(`#12`)[0].innerText.replace('\n', '') == 'O')
+			&& ($(`#20`)[0].innerText.replace('\n', '') == 'X' || $(`#20`)[0].innerText.replace('\n', '') == 'O')
+			&& ($(`#21`)[0].innerText.replace('\n', '') == 'X' || $(`#21`)[0].innerText.replace('\n', '') == 'O')
+			&& ($(`#22`)[0].innerText.replace('\n', '') == 'X' || $(`#22`)[0].innerText.replace('\n', '') == 'O')) ganador = 3; 	
 	}
 
 	if(ganador == 1) socket.emit('someone has won', 'X', enemy, $('#boardTicTacToe').html());
 	else if(ganador == 2) socket.emit('someone has won', 'O', enemy, $('#boardTicTacToe').html());
 	else if(ganador == 3) socket.emit('someone has won', '=', enemy, $('#boardTicTacToe').html());
-}
+
+} 
 
 for(var i = 0; i<3; i++){
 	for(var j = 0; j<3; j++){
