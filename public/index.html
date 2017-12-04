@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TicTacToe :)</title>
+
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="semantic/dist/semantic.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body>
+
+	<div class="ui container">
+
+		<div class="index">
+			<div class="ui horizontal segments">
+				<div class="ui green segment">
+					<h1 class="ui header">Crear partida</h1>
+					<button class="green massive ui button" onclick="newMatch()"><i class="add circle icon"></i>Crear partida!</button>
+				</div>
+				<div class="ui yellow segment">
+					<h1 class="ui header">Únete a una nueva partida</h1>
+					<button class="yellow massive ui button" onclick="getIn()"><i class="level up icon"></i>Unirme!</button>
+					<form class="ui form">
+						<div class="field">
+							<label>Código de la partida</label>
+							<div class="ui left icon input">
+								<i class="code link icon"></i>
+								<input type="text" id="code" name="code" placeholder="Ej: A1B5C4">
+							</div>
+							<div class="ui error message not found">
+								<div class="header">Error!</div>
+								<p>La partida que has ingresado no existe.</p>
+							</div>
+							<div class="ui error message not valid">
+								<div class="header">Error!</div>
+								<p>Ingresa texto válido.</p>
+							</div>
+						</div>
+						<input type="button" class="green ui button" onclick="reallyGetIn()" value="Unirme!">
+					</form>
+				</div>
+			</div>
+			<div class="ui purple piled segment">
+				<h1>Bienvenido a mi TicTacToe :)</h1>
+				<p>Fue desarrollado con Node.js, Socket.io y Semantic-ui para la clase de Sistemas Distribuidos.</p>
+				<a href="https://github.com/megustalafantabienfria" target="_blank" class="ui button"><i class="github icon"></i> Visita el repositorio de mi código</a>
+			</div>
+		</div>
+
+		<div class="new match">
+			<div class="ui green piled segment">
+				<h1>Nueva partida</h1>
+				<br>
+				<div class="ui transparent huge left icon input disabled">
+					<i class="code link icon"></i>
+					<input type="text" name="codeToSend" id="codeToSend" style="text-align: center">
+				</div><br>
+				<label>Dile a tu amigo que se una a la partida con el código de arriba.</label><br><br><br>
+				<div class="ui active centered inline text loader">
+					Esperando conexión...
+				</div>
+			</div>
+		</div>
+
+		<div class="tictactoe">
+			<h1 class='ui centered header'>A jugar!</h1>
+			<br><h4 class='turn ui centered header red'></h4>
+			<div id="boardTicTacToe" class='ui centered'>
+			</div>
+			<div class='ui active dimmer'>
+				<div class="ui text loader">Esperando el turno del contrincante.</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>

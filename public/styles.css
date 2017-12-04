@@ -1,0 +1,28 @@
+body {
+	background-color: #eee;
+}
+
+.ui.yellow.segment, .ui.green.segment, .ui.purple.piled.segment {
+	text-align: center;
+}
+
+.ui.form, .ui.error.message.not.found ,.ui.error.message.not.valid, .new.match, .tictactoe, .ui.active.dimmer{
+	display: none;
+}
+
+#boardTicTacToe {
+	position: relative;
+	margin: 0 auto 2em auto;
+	align-content: center;
+}
+
+#boardTicTacToe div {
+	position: absolute;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	background: #f6f8f9;
+	border: 1px solid #ddd;
+	width: 100px;
+	height: 100px;
+}
